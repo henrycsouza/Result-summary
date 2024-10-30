@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Results summary component</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap');
+
+    :root {
+      --light-red: hsl(0, 100%, 67%);
+      --orange-yellow: hsl(39, 100%, 56%);
+      --green-teal: hsl(166, 100%, 37%);
+      --cobalt-blue: hsl(234, 85%, 45%);
+
+      --light-slate-blue: hsl(252, 100%, 67%);
+      --light-royal-blue: hsl(241, 81%, 54%);
+
+      --violet-blue: hsla(256, 72%, 46%, 1);
+      --persian-blue: hsla(241, 72%, 46%, 0);
+
+      --white: hsl(0, 0%, 100%);
+
+      --image-width: 30px;
+      --image-height: 20px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+
+    body {
+      font-family: "Hanken Grotesk";
+
+    }
+
+
+    p {
+      font-size: 18px;
+    }
+
+    .container {
+      width: 640px;
+      height: 100%;
+      border-radius: 10px;
+      display: flex;
+      box-shadow: 9px 10px 36px -3px rgba(0, 0, 0, 0.42);
+      -webkit-box-shadow: 9px 10px 36px -3px rgba(0, 0, 0, 0.42);
+      -moz-box-shadow: 9px 10px 36px -3px rgba(0, 0, 0, 0.42);
+      margin: 200px auto;
+    }
+
+    .container_left {
+      background-image: linear-gradient(var(--light-slate-blue), var(--light-royal-blue));
+      height: 450px;
+      width: 320px;
+      border-radius: 20px;
+      text-align: center;
+      padding: 25px 35px 20px;
+      color: var(--white);
+    }
+
+    .container_right {
+      right: 1em;
+    }
+
+    .left_title {
+      text-align: center;
+      font-size: 24px;
+      opacity: 0.6;
+    }
+
+    .container_circle {
+      background-image: linear-gradient(var(--violet-blue), var(--persian-blue));
+      height: 170px;
+      width: 170px;
+      border-radius: 100%;
+      margin: 20px auto;
+      padding: 30px;
+    }
+
+    .point {
+      color: #fff;
+      font-weight: 700;
+      font-size: 64px;
+      text-align: center;
+    }
+
+    .limit_point {
+      color: #fff;
+      text-align: center;
+      font-weight: 500;
+      opacity: 0.8;
+    }
+
+    .right_title {
+      margin-left: 1em;
+      margin-top: 1em;
+      font-size: 24px;
+
+    }
+
+    .container_base {
+      display: flex;
+      align-items: center;
+      /* Centralização vertical */
+      justify-content: center;
+      /* Centralização horizontal */
+      text-align: center;
+      border-radius: 10px;
+      margin-left: 2em;
+      height: 50px;
+      width: 250px;
+      font-weight: 600;
+      margin-top: 1em;
+      gap: 0.5em;
+    }
+
+    .container_reaction {
+      background-color: hsla(0, 100%, 67%, 0.1);
+    }
+
+    .container_reaction:hover {
+      background-color: hsla(0, 70%, 59%, 0.411);
+    }
+
+    .container_memory {
+      background-color: hsla(39, 100%, 56%, 0.1);
+    }
+
+    .container_memory:hover {
+      background-color: hsla(39, 100%, 56%, 0.308);
+    }
+
+    .container_verbal {
+      background-color: hsla(166, 100%, 37%, 0.1);
+    }
+
+    .container_verbal:hover {
+      background-color: hsla(166, 100%, 37%, 0.233);
+    }
+
+    .container_visual {
+      background-color: hsla(234, 85%, 45%, 0.1);
+    }
+
+    .container_visual:hover {
+      background-color: hsla(234, 85%, 45%, 0.288);
+    }
+
+    .container_reaction {
+      margin-top: 2em;
+    }
+
+    .title_reaction,
+    .title_memory,
+    .title_verbal,
+    .title_visual {
+      margin-top: -0.2em;
+    }
+
+    .title_reaction {
+      color: var(--light-red);
+    }
+
+    .title_memory {
+      color: var(--orange-yellow);
+    }
+
+    .title_verbal {
+      color: var(--green-teal);
+    }
+
+    .title_visual {
+      color: var(--cobalt-blue);
+    }
+
+    .container_reaction img,
+    .container_memory img,
+    .container_verbal img,
+    .container_visual img {
+      width: var(--image-width);
+      height: var(--image-height);
+    }
+
+    .number_reaction,
+    .number_memory,
+    .number_verbal,
+    .number_visual {
+      margin-left: 3em;
+      font-size: 18px;
+      margin-top: 0.1em;
+    }
+
+    .title_verbal,
+    .title_visual {
+      margin-left: 0;
+    }
+
+    .container_verbal img,
+    .container_visual img {
+      margin-left: 0;
+    }
+
+    .number_verbal,
+    .number_visual {
+      margin-right: 0;
+      margin-left: 4em;
+    }
+
+    span {
+      color: #8f8f8f;
+    }
+
+    .btn-continue {
+      padding: 17px;
+      color: var(--white);
+      width: 100%;
+      margin-top: 15px;
+      background-color: hsla(224, 29%, 27%, 1);
+      border: none;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 1em;
+      transition: 1s;
+    }
+
+    .btn-continue:hover {
+      background-color: rgb(77, 93, 134);
+    }
+
+    .btn-continue:active {
+      transform: scale(0.95);
+    }
+
+    .attribution{
+      text-align: center;
+    }
+
+    .attribution a{
+      text-decoration: none;
+      color: #8f8f8f;
+    }
+
+    .attribution a:hover{
+      color: #464646;
+    }
+
+    @media screen and (max-width: 400px) {
+      .container {
+        display: block;
+        width: 80%;
+        margin-left: 2em;
+      }
+
+      .container_left{
+        width: 100%;
+      }
+
+      .container_right {
+        width: 80%;
+      }
+      .btn-continue{
+        margin-left: 2.5em;
+        margin-bottom: 1em;
+      }
+
+      .attribution{
+        font-size: 14px;
+        margin-bottom: 6em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <div class="container_left">
+      <h1 class="left_title">Your Result</h1>
+      <div class="container_circle">
+        <p class="point">76</p>
+        <p class="limit_point">of 100</p>
+      </div>
+      <h2 class="left_title_second">Great</h2>
+      <p class="info">You scored higher than 65% of the people who have taken these tests.</p>
+    </div>
+    <div class="container_right">
+      <h1 class="right_title">Summary</h1>
+
+      <div class="container_skils">
+        <div class="container_reaction container_base">
+          <img src="./assets/images/icon-reaction.svg" alt="Icon Reaction">
+          <p class="title_reaction">Reaction</p>
+          <h2 class="number_reaction">80 <span>/ 100</span></h2>
+        </div>
+
+        <div class="container_memory container_base">
+          <img src="./assets/images/icon-memory.svg" alt="Icon Reaction">
+          <p class="title_memory">Memory</p>
+          <h2 class="number_memory">92 <span>/ 100</span></h2>
+        </div>
+
+        <div class="container_verbal container_base">
+          <img src="./assets/images/icon-verbal.svg" alt="Icon Reaction">
+          <p class="title_verbal">Verbal</p>
+          <h2 class="number_verbal">61 <span>/ 100</span></h2>
+        </div>
+
+        <div class="container_visual container_base">
+          <img src="./assets/images/icon-visual.svg" alt="Icon Reaction">
+          <p class="title_visual">Visual</p>
+          <h2 class="number_visual">72 <span>/ 100</span></h2>
+        </div>
+      </div>
+
+      <div class="btn-right">
+        <button class="btn-continue">Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+    Coded by <a href="#">Henry Souza</a>.
+  </div> 
+</body>
+
+</html>
